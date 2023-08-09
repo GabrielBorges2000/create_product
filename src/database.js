@@ -1,21 +1,20 @@
 import setupKnex from 'knex'
 import { env } from '../env/index.js'
 
-if (!process.env.DATABASE_URL) {
-  throw new Error('DATABASE_URL env not found!')
-}
-
 export const knexConfig = {
-  client: 'sqlite',
+  client: 'mysql',
   connection: {
-    filename: env.DATABASE_URL,
+    host: 'localhost',
+    port: '3306',
+    user: env.DATABASE_USER,
+    password: env.DATABASE_PASSWORD,
+    database: 'product',
   },
-  useNullAsDefault: true,
-  migrations: {
-    extensions: 'js',
-    directory: './db/migrations',
-  },
+  // useNullAsDefault: true,
+  // migrations: {
+  //   extensions: 'js',
+  //   directory: './db/migrations',
+  // },
 }
-
 
 export const knex = setupKnex(knexConfig)

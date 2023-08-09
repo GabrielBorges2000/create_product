@@ -1,7 +1,9 @@
 import express from 'express'
 import expressEjsLayouts from 'express-ejs-layouts'
 import bodyParser from 'body-parser'
+import cookieParser from 'cookie-parser'
 import productRouter from './router/product.js'
+import pageRouter from './router/page.js'
 
 const app = express()
 
@@ -12,6 +14,9 @@ app.use(bodyParser.json())
 
 app.use(express.static('/public'))
 
+app.use(cookieParser())
+
 app.use(productRouter)
+app.use(pageRouter)
 
 export default app
