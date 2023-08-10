@@ -1,20 +1,18 @@
 <!DOCTYPE html>
 <html>
 
-<%- include('components/head'); %>
+<%- include('head'); %>
 
   <body>
-
-    <header class="container">
-      <%- include('components/header'); %>
+    <header>
+      <%- include('components/navbar'); %>
     </header>
-
-    <main class="container">
-        <%- body %>
+    <main>
+      <%- body %>
     </main>
 
-    <%- include('components/footer'); %>
-      <%- include('components/scripts'); %>
+    <%- include('footer'); %>
+      <%- include('scripts'); %>
 
   </body>
 

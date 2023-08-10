@@ -8,18 +8,35 @@ const productRouter = routersExpress()
 const router = productRouter
 
 router.get('/product', async (req, res) => {
-  const products = await knex('product').select('*')
+  const { sessionId } = req.cookies
+
+  if (!sessionId) {
+    return res.status(401).send({
+      error: 'Unauthotized!',
+    })
+  }
+
+  const products = await knex('product').where({ sessionId }).select('*')
+
   return res.json({ products })
 })
 
 router.get('/product/:id', async (req, res) => {
+  const { sessionId } = req.cookies
+
+  if (!sessionId) {
+    return res.status(401).send({
+      error: 'Unauthotized!',
+    })
+  }
+
   const getProductParamsSchema = z.object({
     id: z.string().uuid(),
   })
 
   const { id } = getProductParamsSchema.parse(req.params)
 
-  const product = await knex('product').where('id', id).first()
+  const product = await knex('product').where({ id, sessionId }).first()
 
   return res.json({ product })
 })
@@ -28,33 +45,40 @@ router.post('/product', async (req, res) => {
   const createProductBodySchema = z.object({
     productName: z.string(),
     value: z.number(),
-    // sessionId: z.string().uuid(),
   })
 
   const { productName, value } = createProductBodySchema.parse(req.body)
 
-  // let sessionId = createProductBodySchema.parse(req.cookies.sessionId)
+  let sessionId = req.cookies.sessionId
 
-  // if (!sessionId) {
-  //   sessionId = randomUUID()
+  if (!sessionId) {
+    sessionId = randomUUID()
 
-  //   res.cookie('sessionId', sessionId, {
-  //     path: '/',
-  //     maxAge: 1000 * 60 * 60 * 24 * 7, // 7 days
-  //   })
-  // }
+    res.cookie('sessionId', sessionId, {
+      path: '/',
+      maxAge: 1000 * 60 * 60 * 24 * 1, // 1 days
+    })
+  }
 
   await knex('product').insert({
     id: randomUUID(),
     productName,
     value,
-    // sessionId,
+    sessionId,
   })
 
   return res.status(201).send('Created Product!')
 })
 
 router.put('/product/:id', async (req, res) => {
+  const { sessionId } = req.cookies
+
+  if (!sessionId) {
+    return res.status(401).send({
+      error: 'Unauthotized!',
+    })
+  }
+
   const getProductParamsSchema = z.object({
     id: z.string().uuid().optional(),
     productName: z.string().optional(),
@@ -65,7 +89,7 @@ router.put('/product/:id', async (req, res) => {
   const { id } = getProductParamsSchema.parse(req.params)
   const { productName, value, stock } = getProductParamsSchema.parse(req.body)
 
-  const product = await knex('product').where({ id }).update({
+  const product = await knex('product').where({ id, sessionId }).update({
     productName,
     value,
     stock,

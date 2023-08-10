@@ -15,7 +15,6 @@ app.use(bodyParser.json())
 app.use(express.static('/public'))
 
 app.use(cookieParser())
-
 app.use(productRouter)
 app.use(pageRouter)
 
