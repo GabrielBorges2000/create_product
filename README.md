@@ -69,6 +69,15 @@ userId          varchar(255)
 
 ```
 
+no arquivo en defina as variáveis necessárias para rodas sua aplicação
+
+```
+NODE_ENV=development
+DATABASE_CLIENT='mysql'
+DATABASE_USER='seu-usuário-do-mysql-aqui'
+DATABASE_URL='localhost'
+DATABASE_PASSWORD='sua-senha-do-mysql-aqui'
+```
 ## Funcionalidades da Aplicação
 
 - [x] O usuário deve conseguir um relatório dos produtos
