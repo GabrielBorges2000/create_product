@@ -4,7 +4,7 @@ import { Router as routersExpress } from 'express'
 const pageRouter = routersExpress()
 const router = pageRouter
 
-router.get('/', async function (req, res) {
+router.get('/cadastro', async function (req, res) {
   res.render('pages/login')
 })
 
@@ -16,7 +16,7 @@ router.get('/home', async function (req, res) {
   })
 })
 
-router.get('/cadastro', async function (req, res) {
+router.get('/', async function (req, res) {
   const products = await axios.get('http://localhost:3000/product')
 
   res.render('pages/cadastro-product', {
