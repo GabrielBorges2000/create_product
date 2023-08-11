@@ -12,7 +12,7 @@
           const type = $('#floatingSelect').val()
           const productName = $('.input-product-modal').val()
           const stock = parseFloat($('.input-stock-modal').val())
-          const value = parseFloat($('.input-value-modal').val()) 
+          const value = parseFloat($('.input-value-modal').val())
 
           const updatedFields = {
             productName,
@@ -23,28 +23,30 @@
           if (type === 'add') {
             updatedFields.productName = productName ? productName : dataApi.productName
             updatedFields.stock = !isNaN(stock) ? dataApi.product.stock + stock : dataApi.product.stock
-            updatedFields.value = !isNaN(value) ? dataApi.product.value + value : dataApi.product.value
+            updatedFields.value = !isNaN(value) ? value : dataApi.product.value
           } else if (type === 'remove') {
             updatedFields.productName = productName ? productName : dataApi.productName
             updatedFields.stock = !isNaN(stock) ? dataApi.product.stock - stock : dataApi.product.stock
-            updatedFields.value = !isNaN(value) ? dataApi.product.value - value : dataApi.product.value
+            updatedFields.value = !isNaN(value) ? value : dataApi.product.value
           }
-
-          console.log(updatedFields)
 
           $.ajax({
             type: 'PUT',
             url: `/product/${productId}`,
             data: updatedFields
           }).done(function (response) {
-            alert(response.message)
+            alert('Produto atualizado com sucesso!')
             location.reload()
           }).fail(function (error) {
             console.log(error)
-            alert('Error updating product!')
+            alert('Erro ao atualizar o produto!')
           })
+
         })
+
       })
+
     })
+
   })
 </script>

@@ -11,3 +11,25 @@
 <%- include('./js/create_product'); %>
 <%- include('./js/open-modal-update'); %>
 <%- include('./js/open-modal-trash'); %>
+
+<script>
+  $(document).ready(() => {
+
+    $('.btn-login').click(() => { // Changed the selector to match the button class
+      const user = $('#exampleInputEmail1').val();
+      const password = $('#exampleInputPassword1').val();
+
+      if (user !== '' && password !== '') {
+        if (user === 'admin' && password === 'admin') {
+          window.location.replace('/home');
+        } else {
+          alert('Usuário não autorizado!');
+        }
+      } else {
+        alert('Por favor, preencha todos os campos.');
+      }
+    });
+
+  });
+
+</script>

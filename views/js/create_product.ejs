@@ -2,8 +2,6 @@
   $(document).ready(() => {
 
     $('.btn-product-created').click(() => {
-
-      
       const productName = $('.input-product').val()
       const stock = parseInt($('.input-stock').val())
       const value = parseInt($('.input-value').val())
@@ -16,7 +14,6 @@
         return alert("Adicione a quantidade ou valor para cadastrar um produto!")
       }
 
-
       $.ajax({
         type: 'POST',
         url: '/product',
@@ -26,13 +23,12 @@
           value: value,
         }
       }).done(function (dados) {
-        alert("Product created successfully")
+        alert("Produto criado com sucesso!")
         location.reload()
       }).fail(function (error) {
         console.log(error)
-        alert("Error creating product!")
+        alert("Erro ao criar o produto!")
       })
-
 
     })
 
