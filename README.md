@@ -51,6 +51,24 @@ Pronto! Basta realizar as alterações nos arquivos se for necessário ou soment
 
 Esse arquivo foi utilizado o bootstrap com uma configuração básica de css,express, node.js 18 LTS, EJS e jQuery.
 
+## Segue Abaixo as configurações das tabelas mysql
+
+Crie um banco com o nome ```product```.
+
+Dentro do banco crie uma tabela com nome de ```product```.
+
+Na tabela product defina as seguintes colunas:
+
+```
+id              char(36) PK 
+productName     text 
+value           decimal(10,2) 
+stock           decimal(10,2) 
+created_at      timestamp 
+userId          varchar(255)
+
+```
+
 ## Funcionalidades da Aplicação
 
 - [x] O usuário deve conseguir um relatório dos produtos
