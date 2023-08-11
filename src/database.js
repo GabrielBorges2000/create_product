@@ -13,10 +13,14 @@ import { env } from '../env/index.js'
 // }
 
 export const knexConfig = {
-  client: 'sqlite',
-  connection: {
-    filename: env.DATABASE_URL,
-  },
+  client: env.DATABASE_CLIENT,
+  connection:
+    env.DATABASE_CLIENT === 'sqlite'
+      ? {
+        // eslint-disable-next-line prettier/prettier
+        filename: env.DATABASE_URL,
+      }
+      : env.DATABASE_CLIENT,
   useNullAsDefault: true,
   migrations: {
     extensions: 'js',

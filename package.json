@@ -4,6 +4,9 @@
   "description": "",
   "type": "module",
   "main": "index.js",
+  "engines": {
+    "node": ">= 18"
+  },
   "scripts": {
     "dev": "nodemon server.js",
     "lint": "eslint src --ext .js --fix"
@@ -22,12 +25,14 @@
     "knex": "^2.5.1",
     "mysql": "^2.18.1",
     "nodemon": "^3.0.1",
-    "sqlite3": "^5.1.6",
+    "pg": "^8.11.2",
     "zod": "^3.21.4"
   },
   "devDependencies": {
     "@faker-js/faker": "^8.0.2",
     "@rocketseat/eslint-config": "^2.1.0",
-    "eslint": "^8.46.0"
+    "eslint": "^8.46.0",
+    "tsup": "^7.2.0",
+    "sqlite3": "^5.1.6"
   }
 }
