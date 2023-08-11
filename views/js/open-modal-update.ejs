@@ -5,14 +5,14 @@
 
       $.ajax({
         type: 'GET',
-        url: `/postgres://product_gerence_user:HBFNttzGAIrRdgHIybEMVikgrfeJh8nS@dpg-cjb857qnip6c73df01eg-a.ohio-postgres.render.com/product_gerence/${productId}`,
+        url: `/postgres://product_gerence_user:HBFNttzGAIrRdgHIybEMVikgrfeJh8nS@dpg-cjb857qnip6c73df01eg-a/product_gerence/${productId}`,
         dataType: 'json'
       }).done((dataApi) => {
         $('.btn-product-update').click(() => {
           const type = $('#floatingSelect').val()
           const productName = $('.input-product-modal').val()
-          const stock = parseFloat($('.input-stock-modal').val()) 
-          const value = parseFloat($('.input-value-modal').val()) 
+          const stock = parseFloat($('.input-stock-modal').val())
+          const value = parseFloat($('.input-value-modal').val())
 
           const updatedFields = {
             productName,
@@ -34,7 +34,7 @@
 
           $.ajax({
             type: 'PUT',
-            url: `/postgres://product_gerence_user:HBFNttzGAIrRdgHIybEMVikgrfeJh8nS@dpg-cjb857qnip6c73df01eg-a.ohio-postgres.render.com/product_gerence/${productId}`,
+            url: `/postgres://product_gerence_user:HBFNttzGAIrRdgHIybEMVikgrfeJh8nS@dpg-cjb857qnip6c73df01eg-a/product_gerence/${productId}`,
             data: updatedFields
           }).done(function (response) {
             alert(response.message)
