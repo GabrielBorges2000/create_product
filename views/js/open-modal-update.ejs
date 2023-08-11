@@ -1,0 +1,50 @@
+<script>
+  $(document).ready(() => {
+    $('.btn-modal-update').click(function () {
+      const productId = $(this).data('id')
+
+      $.ajax({
+        type: 'GET',
+        url: `/product/${productId}`,
+        dataType: 'json'
+      }).done((dataApi) => {
+        $('.btn-product-update').click(() => {
+          const type = $('#floatingSelect').val()
+          const productName = $('.input-product-modal').val()
+          const stock = parseFloat($('.input-stock-modal').val()) // Parse as float
+          const value = parseFloat($('.input-value-modal').val()) // Parse as float
+
+          const updatedFields = {
+            productName,
+            stock,
+            value
+          }
+
+          if (type === 'add') {
+            updatedFields.productName = productName ? productName : dataApi.productName
+            updatedFields.stock = !isNaN(stock) ? dataApi.product.stock + stock : dataApi.product.stock
+            updatedFields.value = !isNaN(value) ? dataApi.product.value + value : dataApi.product.value
+          } else if (type === 'remove') {
+            updatedFields.productName = productName ? productName : dataApi.productName
+            updatedFields.stock = !isNaN(stock) ? dataApi.product.stock - stock : dataApi.product.stock
+            updatedFields.value = !isNaN(value) ? dataApi.product.value - value : dataApi.product.value
+          }
+
+          console.log(updatedFields)
+
+          $.ajax({
+            type: 'PUT',
+            url: `/product/${productId}`,
+            data: updatedFields
+          }).done(function (response) {
+            alert(response.message)
+            location.reload()
+          }).fail(function (error) {
+            console.log(error)
+            alert('Error updating product!')
+          })
+        })
+      })
+    })
+  })
+</script>

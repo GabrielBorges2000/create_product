@@ -1,5 +1,11 @@
-<table class="table table-striped table-hover table-bordered">
-  <thead>
+<style>
+  .space-table-home {
+    margin-top: 40px;
+  }
+</style>
+
+<table class="table table-striped table-hover table-bordered space-table-home">
+  <thead class="table-thead-product">
     <tr>
       <th scope="col"></th>
       <th scope="col">Produto</th>
@@ -11,7 +17,7 @@
     <% table.forEach((item, index)=> { %>
       <tr>
         <th scope="row">
-          <%= index %>
+          <%- index + 1 %>
         </th>
         <td>
           <%= item.productName %>
@@ -20,22 +26,9 @@
           <%= item.stock %>
         </td>
         <td>
-          <%= item.value %>
+          R$<%= item.value %>
         </td>
       </tr>
       <% }); %>
-
-        <!-- <tr>
-      <th scope="row">2</th>
-      <td>Tomate</td>
-      <td>10</td>
-      <td>R$2</td>
-    </tr>
-    <tr>
-      <th scope="row">3</th>
-      <td>Alface</td>
-      <td>10</td>
-      <td>R$5</td>
-    </tr> -->
   </tbody>
 </table>

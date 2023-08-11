@@ -1,6 +1,32 @@
+<style>
+  
+  .jumbotron.text-center{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 12rem);
+
+  }
+
+  .container-login{
+    max-height: 420px;
+    max-width: 320px;
+    margin: 0 auto;
+
+    border: 1px solid gray;
+    border-radius: 5px;
+
+    padding: 40px;
+  }
+</style>
+
 <div class="jumbotron text-center">
-  Página de Login
-</div>
-<div class="container">
-  <%- include('../components/formLogin') %>
+  <div class="container jumbotron">
+    <h1>Gerenciador</h1>
+    <p>Faça login para ter acesso ao sistema!</p>
+  </div>
+   <div class="container container-login">
+    <%- include('../components/formLogin') %>
+  </div>
 </div>

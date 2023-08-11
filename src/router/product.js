@@ -19,7 +19,7 @@ router.get('/product/:id', async (req, res) => {
   // const { sessionId } = req.cookies
 
   const getProductParamsSchema = z.object({
-    id: z.string().uuid(),
+    id: z.string(),
   })
 
   const { id } = getProductParamsSchema.parse(req.params)
@@ -32,10 +32,11 @@ router.get('/product/:id', async (req, res) => {
 router.post('/product', async (req, res) => {
   const createProductBodySchema = z.object({
     productName: z.string(),
-    value: z.number(),
+    value: z.string(),
+    stock: z.string(),
   })
 
-  const { productName, value } = createProductBodySchema.parse(req.body)
+  const { productName, value, stock } = createProductBodySchema.parse(req.body)
 
   // let sessionId = req.cookies.sessionId
 
@@ -52,6 +53,7 @@ router.post('/product', async (req, res) => {
     id: randomUUID(),
     productName,
     value,
+    stock,
     // sessionId,
   })
 
@@ -62,10 +64,10 @@ router.put('/product/:id', async (req, res) => {
   // const { sessionId } = req.cookies
 
   const getProductParamsSchema = z.object({
-    id: z.string().uuid().optional(),
+    id: z.string().optional(),
     productName: z.string().optional(),
-    value: z.number().optional(),
-    stock: z.number().optional(),
+    value: z.string().optional(),
+    stock: z.string().optional(),
   })
 
   const { id } = getProductParamsSchema.parse(req.params)
@@ -82,12 +84,12 @@ router.put('/product/:id', async (req, res) => {
 
 router.delete('/product/:id', async (req, res) => {
   const getProductParamsSchema = z.object({
-    id: z.string().uuid(),
+    id: z.string(),
   })
 
   const { id } = getProductParamsSchema.parse(req.params)
 
-  await knex('product').delete(id).returning()
+  await knex('product').where({ id }).select('*').del()
 
   return res.status(200).send('Delete Product!')
 })

@@ -13,9 +13,7 @@ app.use(expressEjsLayouts)
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
-app.use(express.static('/public/assets'))
-app.use(express.static('/public/css'))
-app.use(express.static('/public/js'))
+app.use(express.static('./public'))
 
 app.use(cookieParser())
 

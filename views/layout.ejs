@@ -1,19 +1,21 @@
 <!DOCTYPE html>
 <html>
 
-<%- include('head'); %>
+<%- include('./head'); %>
 
   <body>
     <header>
-      <%- include('components/navbar') %>
+      <%- include('./components/navbar') %>
     </header>
     <main>
       <%- body %>
     </main>
 
-    <%- include('footer'); %>
-      <%- include('scripts'); %>
-
+    <%- include('./footer'); %>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+    <%- include('./scripts'); %>
+    
   </body>
 
 </html>

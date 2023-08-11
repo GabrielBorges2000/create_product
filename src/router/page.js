@@ -16,11 +16,10 @@ router.get('/home', async function (req, res) {
   })
 })
 
-router.get('/products', async function (req, res) {
-  ''
+router.get('/cadastro', async function (req, res) {
   const products = await axios.get('http://localhost:3000/product')
 
-  res.render('pages/products', {
+  res.render('pages/cadastro-product', {
     teste: products.data,
   })
 })

@@ -1,9 +1,9 @@
 <%- contentFor('body') %>
-  <div class="jumbotron text-center">
-    Página Inicial
+  <div class="container jumbotron">
+    <h1 >Relatório dos Produtos Cadastrados</h1>
+    <p>Verifique abaixo todos os produtos disponíveis, quantidade e valor unitário.</p>
   </div>
 
   <div class="container">
-    <%- include('../components/input') %>
-      <%- include('../components/table', {table : teste}) %>
+    <%- include('../components/table-home', {table : teste}) %>
   </div>

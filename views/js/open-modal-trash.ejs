@@ -1,0 +1,26 @@
+<script>
+  $(document).ready(() => {
+
+    let productId
+
+    $('.btn-showModal-trash').click(function () {
+      productId = $(this).data('id');
+      
+    })
+
+    $('.btn-product-delete').click(() => {
+      console.log(productId)
+      $.ajax({
+        type: 'DELETE',
+        url: `/product/${productId}`,
+      }).done(function (dados) {
+        alert("Product delete successful")
+        location.reload()
+      }).fail(function (error) {
+        console.log(error)
+        alert("Error delete product!")
+      })
+
+    })
+  })
+</script>

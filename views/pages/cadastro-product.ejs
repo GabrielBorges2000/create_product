@@ -1,0 +1,11 @@
+<%- contentFor('body') %>
+
+  <div class="container jumbotron">
+    <h1>Cadastrar e Atualizar Novos Produtos</h1>
+    <p>Cadastre abaixo todos os produtos, quantidade e valor unitário e altere os dados se for preciso.</p>
+  </div>
+
+  <div class="container">
+    <%- include('../components/input_new_product') %>
+      <%- include('../components/table-cadastro', {table : teste}) %>
+  </div>

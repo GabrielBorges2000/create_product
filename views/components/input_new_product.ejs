@@ -1,0 +1,35 @@
+<style>
+  button.btn.btn-lg.btn-primary.edited {
+      width: 100%;
+      height: 3.55rem;
+  }
+</style>
+
+<form class="row g-2">
+  <div class="col-md">
+    <div class="form-floating">
+      <input type="text" class="form-control input-product" id="floatingInputGrid" placeholder="Insira um produto" name="productName" required/>
+      <label for="floatingInputGrid">Produto</label>
+    </div>
+  </div>
+
+  <div class="col-md">
+    <div class="form-floating">
+      <input type="number" class="form-control input-stock" id="floatingInputGrid" placeholder="Insira a quantidade" name="stock"/>
+      <label for="floatingInputGrid">Quantidade</label>
+    </div>
+  </div>
+
+  <div class="col-md">
+    <div class="form-floating">
+      <input type="number" class="form-control input-value" id="floatingInputGrid" placeholder="Insira o valor" name="value" required/>
+      <label for="floatingInputGrid">Valor R$</label>
+    </div>
+  </div>
+  <div class="col-md">
+    <div class="form-floating">
+      <button type="button" class="btn btn-lg btn-primary edited btn-product-created">Cadastrar</button>
+    </div>
+  </div>
+
+</form>

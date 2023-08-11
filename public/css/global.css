@@ -1,0 +1,12 @@
+* { 
+  margin: 0;
+  padding: 0;
+  box-shadow: border-box;
+  -webkit-font-smoothing: antialiased; 
+}
+
+:root{
+  font-size: 62.5%;
+}
+
+
