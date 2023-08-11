@@ -3,11 +3,11 @@ import { z } from 'zod'
 
 const envSchema = z.object({
   PORT: z.coerce.number().default(3000),
-  NODE_ENV: z.enum(['development', 'test', 'production']).default('production'),
+  // NODE_ENV: z.enum(['development', 'test', 'production']).default('production'),
   DATABASE_CLIENT: z.enum(['sqlite', 'pg']),
-  DATABASE_USER: z.string().default('root'),
+  // DATABASE_USER: z.string(),
   DATABASE_URL: z.string().default('./db/app.db'),
-  DATABASE_PASSWORD: z.string(),
+  // DATABASE_PASSWORD: z.string(),
 })
 
 const _env = envSchema.safeParse(process.env)
