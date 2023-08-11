@@ -12,7 +12,7 @@
       console.log(productId)
       $.ajax({
         type: 'DELETE',
-        url: `postgres://product_gerence_user:HBFNttzGAIrRdgHIybEMVikgrfeJh8nS@dpg-cjb857qnip6c73df01eg-a/product_gerence/${productId}`,
+        url: `/product/${productId}`,
       }).done(function (dados) {
         alert("Product delete successful")
         location.reload()
