@@ -1,4 +1,4 @@
-# Gerenciador de Pedidos
+# Gerenciador de Produtos
 O Objetivo dessa aplicação é conseguir gerenciar um estoque de produtos de uma empresa. Não se aplica para projetos grandes pois é uma aplicação simples e local.
 
 # 💻 Pré-requisitos
