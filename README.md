@@ -11,7 +11,7 @@ Ter um dispositivo dispositivo ```Desktop```,```Android```,```IOS```.
 
 # Como inicar o servidor?
 
-Baixe as dependências:
+### Baixe as dependências do projeto e crie as schemas do banco de dados MySql:
 Windows:
 
 ```
@@ -21,6 +21,34 @@ No terminal execute:
 
 ```
 npm start
+```
+
+### Segue Abaixo as configurações das tabelas mysql
+
+Crie um banco com o nome ```product```.
+
+Dentro do banco crie uma tabela com nome de ```product```.
+
+Na tabela product defina as seguintes colunas:
+
+```
+id              char(36) PK 
+productName     text 
+value           decimal(10,2) 
+stock           decimal(10,2) 
+created_at      timestamp 
+userId          varchar(255)
+
+```
+
+no arquivo ```.env``` defina as variáveis necessárias para rodas sua aplicação
+
+```
+NODE_ENV=development
+DATABASE_CLIENT='mysql'
+DATABASE_USER='seu-usuário-do-mysql-aqui'
+DATABASE_URL='localhost'
+DATABASE_PASSWORD='sua-senha-do-mysql-aqui'
 ```
 
 No terminal coloque o comando:
@@ -51,33 +79,7 @@ Pronto! Basta realizar as alterações nos arquivos se for necessário ou soment
 
 Esse arquivo foi utilizado o bootstrap com uma configuração básica de css,express, node.js 18 LTS, EJS e jQuery.
 
-## Segue Abaixo as configurações das tabelas mysql
 
-Crie um banco com o nome ```product```.
-
-Dentro do banco crie uma tabela com nome de ```product```.
-
-Na tabela product defina as seguintes colunas:
-
-```
-id              char(36) PK 
-productName     text 
-value           decimal(10,2) 
-stock           decimal(10,2) 
-created_at      timestamp 
-userId          varchar(255)
-
-```
-
-no arquivo en defina as variáveis necessárias para rodas sua aplicação
-
-```
-NODE_ENV=development
-DATABASE_CLIENT='mysql'
-DATABASE_USER='seu-usuário-do-mysql-aqui'
-DATABASE_URL='localhost'
-DATABASE_PASSWORD='sua-senha-do-mysql-aqui'
-```
 ## Funcionalidades da Aplicação
 
 - [x] O usuário deve conseguir um relatório dos produtos
