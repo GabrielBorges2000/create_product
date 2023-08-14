@@ -1,7 +1,7 @@
 export const isAuth = function (req, res, next) {
-  const { sessionId } = req.cookies
+  const { userId } = req.cookies
 
-  if (!sessionId) {
+  if (!userId) {
     return res.status(401).send({
       error: 'Unauthotized!',
     })
