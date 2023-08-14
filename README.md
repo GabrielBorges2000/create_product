@@ -38,7 +38,7 @@ http://localhost:3000/
 ```
 ou 
 ```
-http://yseu-ip-aqui:3000/
+http://seu-ip-aqui:3000/
 ```
 
 caso não saiba como conseguir o endereço ip da sua máquina, abra um terminal e rode o seguinte comando:

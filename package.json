@@ -8,7 +8,7 @@
     "node": ">= 18"
   },
   "scripts": {
-    "dev": "nodemon server.js",
+    "dev": "nodemon src/app.js",
     "lint": "eslint src --ext .js --fix"
   },
   "author": "",

@@ -10,7 +10,7 @@
         return alert("Preencha todos os campos para cadastrar um produto!")
       }
 
-      if (stock <= 0 || value <= 0) {
+      if (stock < 0 || value <= 0) {
         return alert("Adicione a quantidade ou valor para cadastrar um produto!")
       }
 

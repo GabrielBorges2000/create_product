@@ -1,6 +1,6 @@
 Para criar uma nova migration execute o seguint e comando:
 
-npx knex migrate:make <my-migration-name>
+npx knex migrate:make my-migration-name
 
 
 Após definir as tabelas do banco execute o seguinte comando para criar a tabela com base na migration criada:

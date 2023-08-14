@@ -1,35 +1,29 @@
 import { randomUUID } from 'node:crypto'
 import { Router as routersExpress } from 'express'
-import { knex } from '../database.js'
 import { z } from 'zod'
+import { knex } from '../database/index.js'
 
 const productRouter = routersExpress()
-const router = productRouter
 
-router.get('/product', async (req, res) => {
-  // const { sessionId } = req.cookies
-
-  const products = await knex('product') /* .where({ sessionId }) */
-    .select('*')
+productRouter.get('/product', async (req, res) => {
+  const products = await knex('product').select('*')
 
   return res.json(products)
 })
 
-router.get('/product/:id', async (req, res) => {
-  // const { sessionId } = req.cookies
-
+productRouter.get('/product/:id', async (req, res) => {
   const getProductParamsSchema = z.object({
     id: z.string(),
   })
 
   const { id } = getProductParamsSchema.parse(req.params)
 
-  const product = await knex('product').where({ id /* sessionId */ }).first()
+  const product = await knex('product').where({ id }).first()
 
   return res.json({ product })
 })
 
-router.post('/product', async (req, res) => {
+productRouter.post('/product', async (req, res) => {
   const createProductBodySchema = z.object({
     productName: z.string(),
     value: z.string(),
@@ -38,31 +32,17 @@ router.post('/product', async (req, res) => {
 
   const { productName, value, stock } = createProductBodySchema.parse(req.body)
 
-  // let sessionId = req.cookies.sessionId
-
-  // if (!sessionId) {
-  //   sessionId = randomUUID()
-
-  //   res.cookie('sessionId', sessionId, {
-  //     path: '/',
-  //     maxAge: 1000 * 60 * 60 * 12, // 12 hour
-  //   })
-  // }
-
   await knex('product').insert({
     id: randomUUID(),
     productName,
     value,
     stock,
-    // sessionId,
   })
 
   return res.status(201).send('Created Product!')
 })
 
-router.put('/product/:id', async (req, res) => {
-  // const { sessionId } = req.cookies
-
+productRouter.put('/product/:id', async (req, res) => {
   const getProductParamsSchema = z.object({
     id: z.string().optional(),
     productName: z.string().optional(),
@@ -73,7 +53,7 @@ router.put('/product/:id', async (req, res) => {
   const { id } = getProductParamsSchema.parse(req.params)
   const { productName, value, stock } = getProductParamsSchema.parse(req.body)
 
-  const product = await knex('product').where({ id /*  sessionId */ }).update({
+  const product = await knex('product').where({ id }).update({
     productName,
     value,
     stock,
@@ -82,7 +62,7 @@ router.put('/product/:id', async (req, res) => {
   return res.json(product)
 })
 
-router.delete('/product/:id', async (req, res) => {
+productRouter.delete('/product/:id', async (req, res) => {
   const getProductParamsSchema = z.object({
     id: z.string(),
   })
